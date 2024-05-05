@@ -35,7 +35,6 @@ apt_install \
     unixodbc-dev
 
 install2.r --error --skipinstalled -n "$NCPUS" \
-    tidyverse \
     devtools \
     rmarkdown \
     BiocManager \
@@ -56,8 +55,8 @@ install2.r --error --skipmissing --skipinstalled -n "$NCPUS" \
     RSQLite \
     fst
 
-## a bridge to far? -- brings in another 60 packages
-# install2.r --error --skipinstalled -n "$NCPUS" tidymodels
+## Install tidyverse version 1.3.2
+Rscript -e "install.packages('tidyverse', version='1.3.2', repos='http://cran.us.r-project.org')"
 
 # Clean up
 rm -rf /var/lib/apt/lists/*
@@ -72,4 +71,4 @@ echo -e "Check the tidyverse package...\n"
 
 R -q -e "library(tidyverse)"
 
-echo -e "\nInstall tidyverse package, done!"
+echo -e "\nInstall tidyverse package version 1.3.2, done!"
